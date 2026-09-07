@@ -20,15 +20,16 @@
     </form>
 
     <?php
-        $db = mysqli_connect('localhost', 'root', '', '5b');
-        if ($db){
+        $db = mysqli_connect('localhost', 'root', '', '5b1');
+        if (!$db){
             die("Bład połączenia z bd");
         }
 
         if($q){
-            $odp = mysqli_query($db, "SELECT * FROM 'dane' WHERE 'query' LIKE '%?%'")
-            while($dane = mysqli_fetch_array(%odp)){
-                var_dump($dane);
+            $q_escaped = mysqli_real_escape_string($db, $q);
+            $odp = mysqli_query($db, "SELECT * FROM dane WHERE query LIKE '%$q_escaped%'");
+            while($dane = mysqli_fetch_array($odp)){
+                echo "<div>" . htmlspecialchars($dane['query']) . "</div>";
             }
         }
 
