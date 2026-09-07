@@ -26,7 +26,10 @@
         }
 
         if($q){
-            
+            $odp = mysqli_query($db, "SELECT * FROM 'dane' WHERE 'query' LIKE '%?%'")
+            while($dane = mysqli_fetch_array(%odp)){
+                var_dump($dane);
+            }
         }
 
         mysqli_close($db);
