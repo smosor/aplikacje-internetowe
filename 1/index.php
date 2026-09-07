@@ -25,6 +25,10 @@
             die("Bład połączenia z bd");
         }
 
+        if($q){
+            
+        }
+
         mysqli_close($db);
     ?>
 </body>
