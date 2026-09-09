@@ -9,7 +9,17 @@
 <body>
     <div class="card">
         <h1>Wybierz frazę</h1>
-        <form action="" method="post">
+        <?php
+            $db=mysqli_connect('localhost', 'root', '', '5b1');
+            $id=@$S_GET['dane'];
+            if($dane){
+                $sql = mysqli_query($db, "SELECT * FROM 'dane' WHERE 'id' = $id");
+                $row = mysqli_fetch_array($sql);
+                echo "<p>{$row['query']}</p>";
+            }
+        ?>
+        
+        <form action="" method="get">
             <label for="dane">Dostępne frazy w bazie:</label>
             <select name="dane" id="dane">
                 <?php
